@@ -1,0 +1,191 @@
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="de"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1">&lt;meta name="theme-color" content="#000000"&gt;</p>
+
+<p class="p1">&lt;title&gt;Stoppuhr&lt;/title&gt;</p>
+
+<p class="p1">&lt;style&gt;</p>
+<p class="p1">* {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>box-sizing: border-box;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>-webkit-tap-highlight-color: transparent;</p>
+<p class="p1">}</p>
+
+<p class="p1">body {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height: 100dvh;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #000;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: Arial, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>user-select: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>touch-action: manipulation;</p>
+<p class="p1">}</p>
+
+<p class="p1">#display {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1">}</p>
+
+<p class="p1">#time {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: clamp(55px, 16vw, 110px);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-variant-numeric: tabular-nums;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing: 2px;</p>
+<p class="p1">}</p>
+
+<p class="p1">#status {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-top: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #888;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing: 3px;</p>
+<p class="p1">}</p>
+
+<p class="p1">.running #status {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #00e676;</p>
+<p class="p1">}</p>
+
+<p class="p1">/* Reset-Taste */</p>
+
+<p class="p1">#reset {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position: fixed;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>bottom: 45px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>left: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transform: translateX(-50%);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 48px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height: 48px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 1px solid #444;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #181818;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 25px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content: center;</p>
+<p class="p1">}</p>
+
+<p class="p1">#reset:active {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #444;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transform: translateX(-50%) scale(0.92);</p>
+<p class="p1">}</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+
+<p class="p1">&lt;body&gt;</p>
+
+<p class="p1">&lt;div id="display"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="time"&gt;00:00.0&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="status"&gt;TIPPE ZUM STARTEN&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+
+<p class="p1">&lt;button id="reset" aria-label="Zurücksetzen"&gt;↻&lt;/button&gt;</p>
+
+<p class="p1">&lt;script&gt;</p>
+
+<p class="p1">const display = document.getElementById("display");</p>
+<p class="p1">const timeDisplay = document.getElementById("time");</p>
+<p class="p1">const statusDisplay = document.getElementById("status");</p>
+<p class="p1">const resetButton = document.getElementById("reset");</p>
+
+<p class="p1">let running = false;</p>
+<p class="p1">let startTime = 0;</p>
+<p class="p1">let elapsed = 0;</p>
+<p class="p1">let animationFrame;</p>
+
+<p class="p1">function formatTime(ms) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const totalTenths = Math.floor(ms / 100);</p>
+
+<p class="p1"><span class="Apple-converted-space">    </span>const minutes = Math.floor(totalTenths / 600);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const seconds = Math.floor(totalTenths / 10) % 60;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const tenths = totalTenths % 10;</p>
+
+<p class="p1"><span class="Apple-converted-space">    </span>return (</p>
+<p class="p1"><span class="Apple-converted-space">        </span>String(minutes).padStart(2, "0") + ":" +</p>
+<p class="p1"><span class="Apple-converted-space">        </span>String(seconds).padStart(2, "0") + "." +</p>
+<p class="p1"><span class="Apple-converted-space">        </span>tenths</p>
+<p class="p1"><span class="Apple-converted-space">    </span>);</p>
+<p class="p1">}</p>
+
+<p class="p1">function updateDisplay() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!running) return;</p>
+
+<p class="p1"><span class="Apple-converted-space">    </span>elapsed = performance.now() - startTime;</p>
+
+<p class="p1"><span class="Apple-converted-space">    </span>timeDisplay.textContent = formatTime(elapsed);</p>
+
+<p class="p1"><span class="Apple-converted-space">    </span>animationFrame = requestAnimationFrame(updateDisplay);</p>
+<p class="p1">}</p>
+
+<p class="p1">function toggleStopwatch() {</p>
+
+<p class="p1"><span class="Apple-converted-space">    </span>if (!running) {</p>
+
+<p class="p1"><span class="Apple-converted-space">        </span>// Stoppuhr starten</p>
+<p class="p1"><span class="Apple-converted-space">        </span>running = true;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>startTime = performance.now() - elapsed;</p>
+
+<p class="p1"><span class="Apple-converted-space">        </span>display.classList.add("running");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>statusDisplay.textContent = "LÄUFT";</p>
+
+<p class="p1"><span class="Apple-converted-space">        </span>updateDisplay();</p>
+
+<p class="p1"><span class="Apple-converted-space">    </span>} else {</p>
+
+<p class="p1"><span class="Apple-converted-space">        </span>// Stoppuhr anhalten</p>
+<p class="p1"><span class="Apple-converted-space">        </span>running = false;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>elapsed = performance.now() - startTime;</p>
+
+<p class="p1"><span class="Apple-converted-space">        </span>cancelAnimationFrame(animationFrame);</p>
+
+<p class="p1"><span class="Apple-converted-space">        </span>timeDisplay.textContent = formatTime(elapsed);</p>
+
+<p class="p1"><span class="Apple-converted-space">        </span>display.classList.remove("running");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>statusDisplay.textContent = "GESTOPPT";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1">}</p>
+
+<p class="p1">// Gesamter Bildschirm startet und stoppt</p>
+<p class="p1">display.addEventListener("pointerdown", (event) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>event.preventDefault();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>toggleStopwatch();</p>
+<p class="p1">});</p>
+
+<p class="p1">// Reset-Taste</p>
+<p class="p1">resetButton.addEventListener("pointerdown", (event) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>event.preventDefault();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>event.stopPropagation();</p>
+
+<p class="p1"><span class="Apple-converted-space">    </span>running = false;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>elapsed = 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>startTime = 0;</p>
+
+<p class="p1"><span class="Apple-converted-space">    </span>cancelAnimationFrame(animationFrame);</p>
+
+<p class="p1"><span class="Apple-converted-space">    </span>timeDisplay.textContent = "00:00.0";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>statusDisplay.textContent = "TIPPE ZUM STARTEN";</p>
+
+<p class="p1"><span class="Apple-converted-space">    </span>display.classList.remove("running");</p>
+<p class="p1">});</p>
+
+<p class="p1">&lt;/script&gt;</p>
+
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+
+</body>
+</html>
